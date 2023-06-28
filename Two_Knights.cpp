@@ -4,7 +4,7 @@
 
 
 #include<bits/stdc++.h>
-#include "debug.h"
+// #include "debug.h"
 using namespace std;
 
 #define int   long long
@@ -25,7 +25,12 @@ void solve()
 {
     int n;
     cin >> n;
-    
+    for (long long i = 1; i <= n; i++)
+    {
+        long long total = ((i * i) * ((i * i) - 1)) / 2;
+        long long attack = 4 * (i - 1) * (i - 2);
+        cout << (total - attack) << endl;
+    }
 }
 
 int32_t main()

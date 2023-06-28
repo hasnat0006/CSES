@@ -4,7 +4,7 @@
 
 
 #include<bits/stdc++.h>
-#include "debug.h"
+// #include "debug.h"
 using namespace std;
 
 #define int   long long
@@ -21,11 +21,21 @@ int mod  = 1000000007;
 float pi = 3.141592653589793238462643383279502884197;
 int inf  = 1e18;
 
+int cnt_zero(int n)
+{
+    int c = 0;
+    while (n != 0)
+    {
+        c += n / 5;
+        n /= 5;
+    }
+    return c;
+}
 void solve()
 {
     int n;
     cin >> n;
-    
+    cout << cnt_zero(n) << endl;
 }
 
 int32_t main()

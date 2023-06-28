@@ -4,7 +4,7 @@
 
 
 #include<bits/stdc++.h>
-#include "debug.h"
+// #include "debug.h"
 using namespace std;
 
 #define int   long long
@@ -25,7 +25,27 @@ void solve()
 {
     int n;
     cin >> n;
-    
+    int x = n;
+    int y = (n / 2);
+    if (n % 2 == 1)
+        y++;
+    if (n == 1)
+    {
+        cout << n << endl;
+        return;
+    }
+    if (n <= 3)
+    {
+        cout << "NO SOLUTION\n";
+        return;
+    }
+    for (int i = 0; i < n; i++)
+    {
+        if (i % 2 == 1)
+            cout << x-- << " ";
+        else
+            cout << y-- << " ";
+    }
 }
 
 int32_t main()

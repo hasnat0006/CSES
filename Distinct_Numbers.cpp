@@ -4,7 +4,7 @@
 
 
 #include<bits/stdc++.h>
-#include "debug.h"
+// #include "debug.h"
 using namespace std;
 
 #define int   long long
@@ -23,9 +23,12 @@ int inf  = 1e18;
 
 void solve()
 {
-    int n;
+    int n, x;
     cin >> n;
-    
+    set<int> st;
+    for (int i = 0; i < n; i++)
+        cin >> x, st.insert(x);
+    cout << st.size() << endl;
 }
 
 int32_t main()
