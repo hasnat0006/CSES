@@ -3,7 +3,7 @@
 //!-----------------------------------------------------!//
 
 #include <bits/stdc++.h>
-// #include "debug.h"
+#include "debug.h"
 using namespace std;
 
 #define int long long
@@ -21,14 +21,28 @@ float pi = 3.141592653589793238462643383279502884197;
 int inf = 1e18;
 
 map<int, vector<int>> adj;
-map<int, int> visited;
+map<int, int> visited, parent;
+bool f = false;
+int suru = -1;
 
 void dfs(int start)
 {
     visited[start] = 1;
+    cout << start << " ";
     for (auto child : adj[start])
+    {
         if (!visited[child])
+        {
             dfs(child);
+            parent[child] = start;
+        }
+        else if (child != parent[start])
+        {
+            f = true;
+            suru = child;
+            return;
+        }
+    }
 }
 
 void solve()
@@ -39,22 +53,18 @@ void solve()
     {
         int x, y;
         cin >> x >> y;
-        adj[x].pb(y);
-        adj[y].pb(x);
+        adj[x].pb(y), adj[y].pb(x);
     }
-    vector<int> ans;
-    for (int i = 1; i <= n; i++)
-        if (!visited[i])
-            ans.pb(i), dfs(i);
-    cout << ans.size() - 1 << endl;
-    if (ans.size() >= 2)
+    dfs(1);
+    if (!f)
     {
-        int ses = ans.back();
-        ans.pop_back();
-        for (auto it : ans)
-            cout << it << " " << ses << endl;
+        cout << "IMPOSSIBLE\n";
+        return;
     }
+    debug(suru);
+    debug(parent);
 }
+
 int32_t main()
 {
     YUSUF REZA HASNAT;

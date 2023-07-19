@@ -22,19 +22,30 @@ int inf = 1e18;
 
 map<int, vector<int>> adj;
 map<int, int> visited;
+map<int, int> color;
+int f = 0;
 
-void dfs(int start)
+bool dfs(int start, int clr)
 {
-    visited[start] = 1;
+    color[start] = clr, visited[start] = 1;
     for (auto child : adj[start])
+    {
         if (!visited[child])
-            dfs(child);
+        {
+            if (!dfs(child, clr ^ 1))
+                return false;
+        }
+        else if (color[child] == color[start])
+            return false;
+    }
+    return true;
 }
 
 void solve()
 {
     int n, m;
     cin >> n >> m;
+    vector<int> team;
     for (int i = 0; i < m; i++)
     {
         int x, y;
@@ -42,19 +53,23 @@ void solve()
         adj[x].pb(y);
         adj[y].pb(x);
     }
-    vector<int> ans;
+    // debug(adj);
     for (int i = 1; i <= n; i++)
-        if (!visited[i])
-            ans.pb(i), dfs(i);
-    cout << ans.size() - 1 << endl;
-    if (ans.size() >= 2)
     {
-        int ses = ans.back();
-        ans.pop_back();
-        for (auto it : ans)
-            cout << it << " " << ses << endl;
+        if (!visited[i])
+        {
+            if (!dfs(i, 0))
+            {
+                cout << "IMPOSSIBLE\n";
+                return;
+            }
+        }
     }
+    for (auto it : color)
+        cout << it.second + 1 << " ";
+    cout << endl;
 }
+
 int32_t main()
 {
     YUSUF REZA HASNAT;

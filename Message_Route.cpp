@@ -22,13 +22,29 @@ int inf = 1e18;
 
 map<int, vector<int>> adj;
 map<int, int> visited;
+map<int, int> level;
+map<int, int> parent;
 
-void dfs(int start)
+void bfs(int start)
 {
+    queue<int> q;
+    q.push(start);
     visited[start] = 1;
-    for (auto child : adj[start])
-        if (!visited[child])
-            dfs(child);
+    while (!q.empty())
+    {
+        int k = q.front();
+        q.pop();
+        for (auto child : adj[k])
+        {
+            if (!visited[child])
+            {
+                q.push(child);
+                visited[child] = 1;
+                parent[child] = k;
+                level[child] = level[k] + 1;
+            }
+        }
+    }
 }
 
 void solve()
@@ -42,19 +58,26 @@ void solve()
         adj[x].pb(y);
         adj[y].pb(x);
     }
-    vector<int> ans;
-    for (int i = 1; i <= n; i++)
-        if (!visited[i])
-            ans.pb(i), dfs(i);
-    cout << ans.size() - 1 << endl;
-    if (ans.size() >= 2)
+    bfs(1);
+    if (!visited[n])
     {
-        int ses = ans.back();
-        ans.pop_back();
-        for (auto it : ans)
-            cout << it << " " << ses << endl;
+        cout << "IMPOSSIBLE\n";
+        return;
     }
+    int ses = n;
+    vector<int> ans;
+    while (ses != 0)
+    {
+        ans.pb(ses);
+        ses = parent[ses];
+    }
+    reverse(vf(ans));
+    cout << ans.size() << endl;
+    for (auto i : ans)
+        cout << i << " ";
+    cout << endl;
 }
+
 int32_t main()
 {
     YUSUF REZA HASNAT;
