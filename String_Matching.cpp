@@ -24,19 +24,15 @@ int inf = 1e18;
 
 using namespace std;
 
-vector<int> createLPS(string &pattern)
-{
+vector<int> createLPS(string &pattern) {
     vector<int> lps(pattern.length());
     int index = 0;
-    for (int i = 1; i < pattern.length();)
-    {
-        if (pattern[index] == pattern[i])
-        {
+    for (int i = 1; i < pattern.length();) {
+        if (pattern[index] == pattern[i]) {
             lps[i] = index + 1;
             index++, i++;
         }
-        else
-        {
+        else {
             if (index != 0)
                 index = lps[index - 1];
             else
@@ -46,25 +42,21 @@ vector<int> createLPS(string &pattern)
     return lps;
 }
 
-int kmp(string &text, string &pattern)
-{
+int kmp(string &text, string &pattern) {
     int cnt_of_match = 0;
     vector<int> lps = createLPS(pattern);
     // debug(lps);
-    int i = 0, j = 0; // i -> text, j -> pattern
-    while (i < text.length())
-    {
+    int i = 0, j = 0;  // i -> text, j -> pattern
+    while (i < text.length()) {
         if (text[i] == pattern[j])
             i++, j++;
-        else
-        {
+        else {
             if (j != 0)
                 j = lps[j - 1];
             else
                 i++;
         }
-        if (j == pattern.length())
-        {
+        if (j == pattern.length()) {
             cnt_of_match++;
             // the index where match found -> (i - pattern.length());
             j = lps[j - 1];
@@ -73,15 +65,13 @@ int kmp(string &text, string &pattern)
     return cnt_of_match;
 }
 
-void solve()
-{
+void solve() {
     string text, pattern;
     cin >> text >> pattern;
     cout << kmp(text, pattern) << endl;
 }
 
-int32_t main()
-{
+int32_t main() {
     // YUSUF REZA HASNAT;
     int t = 1;
     // cin >> t;

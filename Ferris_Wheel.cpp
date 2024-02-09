@@ -1,11 +1,11 @@
 //!-----------------------------------------------------!//
 //!                  YUSUF REZA HASNAT                  !//
 //!-----------------------------------------------------!//
- 
+
 #include <bits/stdc++.h>
 // #include "debug.h"
 using namespace std;
- 
+
 #define int long long
 #define float long double
 #define pb push_back
@@ -15,13 +15,12 @@ using namespace std;
 #define YUSUF ios_base::sync_with_stdio(false),
 #define REZA cin.tie(NULL),
 #define HASNAT cout.tie(NULL)
- 
+
 int mod = 1000000007;
 float pi = 3.141592653589793238462643383279502884197;
 int inf = 1e18;
- 
-void solve()
-{
+
+void solve() {
     int n, x;
     cin >> n >> x;
     vector<int> v(n), mark(n);
@@ -30,8 +29,7 @@ void solve()
     sort(vr(v));
     // debug(v);
     int ans = 0, sum = 0, last = n - 1;
-    for (int i = 0; (i < n and !mark[i]); i++)
-    {
+    for (int i = 0; (i < n and !mark[i]); i++) {
         int k = v[i];
         if ((x - k) < v[last])
             ans++;
@@ -41,9 +39,8 @@ void solve()
     }
     cout << ans << endl;
 }
- 
-int32_t main()
-{
+
+int32_t main() {
     YUSUF REZA HASNAT;
     int t = 1;
     // cin >> t;

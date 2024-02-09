@@ -23,20 +23,17 @@ int inf = 1e18;
 map<int, vector<int>> adj;
 map<int, int> visited;
 
-void dfs(int start)
-{
+void dfs(int start) {
     visited[start] = 1;
     for (auto child : adj[start])
         if (!visited[child])
             dfs(child);
 }
 
-void solve()
-{
+void solve() {
     int n, m;
     cin >> n >> m;
-    for (int i = 0; i < m; i++)
-    {
+    for (int i = 0; i < m; i++) {
         int x, y;
         cin >> x >> y;
         adj[x].pb(y);
@@ -47,16 +44,14 @@ void solve()
         if (!visited[i])
             ans.pb(i), dfs(i);
     cout << ans.size() - 1 << endl;
-    if (ans.size() >= 2)
-    {
+    if (ans.size() >= 2) {
         int ses = ans.back();
         ans.pop_back();
         for (auto it : ans)
             cout << it << " " << ses << endl;
     }
 }
-int32_t main()
-{
+int32_t main() {
     YUSUF REZA HASNAT;
     int t = 1;
     // cin >> t;

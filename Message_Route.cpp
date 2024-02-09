@@ -25,19 +25,15 @@ map<int, int> visited;
 map<int, int> level;
 map<int, int> parent;
 
-void bfs(int start)
-{
+void bfs(int start) {
     queue<int> q;
     q.push(start);
     visited[start] = 1;
-    while (!q.empty())
-    {
+    while (!q.empty()) {
         int k = q.front();
         q.pop();
-        for (auto child : adj[k])
-        {
-            if (!visited[child])
-            {
+        for (auto child : adj[k]) {
+            if (!visited[child]) {
                 q.push(child);
                 visited[child] = 1;
                 parent[child] = k;
@@ -47,27 +43,23 @@ void bfs(int start)
     }
 }
 
-void solve()
-{
+void solve() {
     int n, m;
     cin >> n >> m;
-    for (int i = 0; i < m; i++)
-    {
+    for (int i = 0; i < m; i++) {
         int x, y;
         cin >> x >> y;
         adj[x].pb(y);
         adj[y].pb(x);
     }
     bfs(1);
-    if (!visited[n])
-    {
+    if (!visited[n]) {
         cout << "IMPOSSIBLE\n";
         return;
     }
     int ses = n;
     vector<int> ans;
-    while (ses != 0)
-    {
+    while (ses != 0) {
         ans.pb(ses);
         ses = parent[ses];
     }
@@ -78,8 +70,7 @@ void solve()
     cout << endl;
 }
 
-int32_t main()
-{
+int32_t main() {
     YUSUF REZA HASNAT;
     int t = 1;
     // cin >> t;

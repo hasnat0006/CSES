@@ -25,8 +25,7 @@ int inf = 1e18;
 using namespace std;
 
 int maxVal = 1e6 + 1;
-void solve()
-{
+void solve() {
     int n, x;
     cin >> n;
     vector<int> freq(maxVal, 0);
@@ -44,8 +43,7 @@ void solve()
     cout << ans << endl;
 }
 
-int32_t main()
-{
+int32_t main() {
     YUSUF REZA HASNAT;
     int t = 1;
     // cin >> t;

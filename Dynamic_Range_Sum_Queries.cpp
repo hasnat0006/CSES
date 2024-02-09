@@ -24,12 +24,10 @@ int inf = 1e18;
 using namespace std;
 int sz = 2 * 1e5 + 5;
 vector<int> v(sz), seg(4 * sz);
-void update(int ti, int low, int high, int id, int val)
-{
+void update(int ti, int low, int high, int id, int val) {
     if (id > high or id < low)
         return;
-    if (id == high and high == low)
-    {
+    if (id == high and high == low) {
         seg[ti] = val;
         return;
     }
@@ -38,10 +36,8 @@ void update(int ti, int low, int high, int id, int val)
     update(2 * ti + 2, mid + 1, high, id, val);
     seg[ti] = (seg[2 * ti + 1] + seg[ti * 2 + 2]);
 }
-void build(int ti, int low, int high)
-{
-    if (high == low)
-    {
+void build(int ti, int low, int high) {
+    if (high == low) {
         seg[ti] = v[low];
         return;
     }
@@ -50,8 +46,7 @@ void build(int ti, int low, int high)
     build(2 * ti + 2, mid + 1, high);
     seg[ti] = (seg[2 * ti + 1] + seg[ti * 2 + 2]);
 }
-int find(int tl, int tr, int ql, int qr, int ti)
-{
+int find(int tl, int tr, int ql, int qr, int ti) {
     if (tl > qr or tr < ql)
         return 0;
     if (tl >= ql and tr <= qr)
@@ -62,15 +57,13 @@ int find(int tl, int tr, int ql, int qr, int ti)
     return (l + r);
 }
 
-void solve()
-{
+void solve() {
     int n, q;
     cin >> n >> q;
     for (int i = 0; i < n; i++)
         cin >> v[i];
     build(0, 0, n - 1);
-    while (q--)
-    {
+    while (q--) {
         int x, l, r;
         cin >> x >> l >> r;
         if (x == 2)
@@ -82,8 +75,7 @@ void solve()
     }
 }
 
-int32_t main()
-{
+int32_t main() {
     YUSUF REZA HASNAT;
     int t = 1;
     // cin>>t;

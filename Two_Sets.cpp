@@ -20,22 +20,18 @@ int mod = 1000000007;
 float pi = 3.141592653589793238462643383279502884197;
 int inf = 1e18;
 
-void solve()
-{
+void solve() {
     int n;
     cin >> n;
     int sum = (n * (n + 1)) / 2;
-    if (sum % 2 == 0)
-    {
+    if (sum % 2 == 0) {
         vector<int> v1, v2;
         int c = 0, lagbe = sum / 2;
-        for (int i = n; i > 0; i--)
-        {
+        for (int i = n; i > 0; i--) {
             c += i;
             if (c <= lagbe)
                 v1.pb(i);
-            else
-            {
+            else {
                 v2.pb(i);
                 c -= i;
             }
@@ -56,8 +52,7 @@ void solve()
         cout << "NO\n";
 }
 
-int32_t main()
-{
+int32_t main() {
     YUSUF REZA HASNAT;
     int t = 1;
     // cin >> t;

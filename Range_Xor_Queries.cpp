@@ -23,10 +23,8 @@ int inf = 1e18;
 
 using namespace std;
 
-void build(int ti, int low, int high, vector<int> &v, vector<int> &seg)
-{
-    if (high == low)
-    {
+void build(int ti, int low, int high, vector<int> &v, vector<int> &seg) {
+    if (high == low) {
         seg[ti] = v[low];
         return;
     }
@@ -35,8 +33,8 @@ void build(int ti, int low, int high, vector<int> &v, vector<int> &seg)
     build(2 * ti + 2, mid + 1, high, v, seg);
     seg[ti] = (seg[2 * ti + 1] ^ seg[ti * 2 + 2]);
 }
-int find(int tl, int tr, int ql, int qr, int ti, vector<int> &v, vector<int> &seg)
-{
+int find(int tl, int tr, int ql, int qr, int ti, vector<int> &v,
+         vector<int> &seg) {
     if (tl > qr or tr < ql)
         return 0;
     if (tl >= ql and tr <= qr)
@@ -47,8 +45,7 @@ int find(int tl, int tr, int ql, int qr, int ti, vector<int> &v, vector<int> &se
     return (l ^ r);
 }
 
-void solve()
-{
+void solve() {
     int n, q;
     cin >> n >> q;
     vector<int> v(n), seg(4 * n);
@@ -58,16 +55,14 @@ void solve()
     // for (auto it : v)
     //     cout << it << " ";
     // cout << endl;
-    while (q--)
-    {
+    while (q--) {
         int l, r;
         cin >> l >> r;
         cout << find(0, n - 1, l - 1, r - 1, 0, v, seg) << endl;
     }
 }
 
-int32_t main()
-{
+int32_t main() {
     YUSUF REZA HASNAT;
     int t = 1;
     // cin>>t;

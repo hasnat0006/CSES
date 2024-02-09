@@ -3,7 +3,6 @@
 //!-----------------------------------------------------!//
 
 #include <bits/stdc++.h>
-#include "debug.h"
 using namespace std;
 
 #define int long long
@@ -27,12 +26,10 @@ map<int, bool> visited;
 map<int, int> parent;
 map<int, vector<pair<int, int>>> adj;
 
-void solve()
-{
+void solve() {
     int n, m;
     cin >> n >> m;
-    while (m--)
-    {
+    while (m--) {
         int u, v;
         int wt;
         std::cin >> u >> v >> wt;
@@ -43,8 +40,7 @@ void solve()
     vector<pairUV> ans;
     priority_queue<pairUV, vector<pairUV>, greater<pairUV>> pq;
     pq.push({0, {1, -1}});
-    while (!pq.empty())
-    {
+    while (!pq.empty()) {
         pairUV k = pq.top();
         pq.pop();
         int u = k.second.first;
@@ -58,8 +54,7 @@ void solve()
         visited[u] = 1;
         if (v != -1)
             ans.push_back({u, {v, wt}});
-        for (auto it : adj[u])
-        {
+        for (auto it : adj[u]) {
             int adjNode = it.first;
             int adjwt = it.second;
             if (!visited[adjNode])
@@ -69,11 +64,11 @@ void solve()
     debug(parent);
     sort(vf(ans));
     for (auto it : ans)
-        std::cout << it.first << " " << it.second.first << " -> " << it.second.second << endl;
+        std::cout << it.first << " " << it.second.first << " -> "
+                  << it.second.second << endl;
 }
 
-int32_t main()
-{
+int32_t main() {
     YUSUF REZA HASNAT;
     int t = 1;
     // cin >> t;

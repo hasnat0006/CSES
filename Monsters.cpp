@@ -28,56 +28,44 @@ char des[1001][1001];
 map<pairi, pairi> parent;
 vector<pairi> moves = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
 
-bool isValid(int x, int y)
-{
-    return (x >= 0 and x < n and y >= 0 and y < m);
-}
+bool isValid(int x, int y) { return (x >= 0 and x < n and y >= 0 and y < m); }
 
-char jabe(pairi a, pairi b)
-{
+char jabe(pairi a, pairi b) {
     int x1 = a.first, y1 = a.second, x2 = b.first, y2 = b.second;
-    if (x1 == x2)
-    {
+    if (x1 == x2) {
         if (y1 > y2)
             return 'R';
         return 'L';
     }
-    else if (y1 == y2)
-    {
+    else if (y1 == y2) {
         if (x1 > x2)
             return 'D';
         return 'U';
     }
 }
 
-bool isCorner(int x, int y)
-{
+bool isCorner(int x, int y) {
     if (x == n - 1 or y == m - 1)
         return true;
     return false;
 }
 
-void bfs(pairi start)
-{
+void bfs(pairi start) {
     queue<pairi> q;
     q.push(start);
     visited[start.first][start.second] = 1;
-    while (!q.empty())
-    {
+    while (!q.empty()) {
         pairi k = q.front();
         q.pop();
-        for (auto it : moves)
-        {
+        for (auto it : moves) {
             int x = k.first + it.first;
             int y = k.second + it.second;
-            if (isValid(x, y) and !visited[x][y])
-            {
+            if (isValid(x, y) and !visited[x][y]) {
                 visited[x][y] = 1;
                 des[x][y] = jabe({x, y}, k);
                 q.push({x, y});
                 parent[{x, y}] = k;
-                if (isCorner(x, y))
-                {
+                if (isCorner(x, y)) {
                     ed = {x, y};
                     return;
                 }
@@ -86,14 +74,11 @@ void bfs(pairi start)
     }
 }
 
-void solve()
-{
+void solve() {
     cin >> n >> m;
     char x;
-    for (int i = 0; i < n; i++)
-    {
-        for (int j = 0; j < m; j++)
-        {
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
             cin >> x;
             if (x == '#' or x == 'M')
                 visited[i][j] = 2;
@@ -102,15 +87,13 @@ void solve()
         }
     }
     bfs(st);
-    if (!visited[ed.first][ed.second])
-    {
+    if (!visited[ed.first][ed.second]) {
         cout << "NO\n";
         return;
     }
     cout << "YES\n";
     vector<char> ans;
-    while (ed != st)
-    {
+    while (ed != st) {
         ans.pb(des[ed.first][ed.second]);
         ed = parent[ed];
     }
@@ -121,8 +104,7 @@ void solve()
     cout << endl;
 }
 
-int32_t main()
-{
+int32_t main() {
     YUSUF REZA HASNAT;
     int t = 1;
     // cin >> t;

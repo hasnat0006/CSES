@@ -3,7 +3,6 @@
 //!-----------------------------------------------------!//
 
 #include <bits/stdc++.h>
-#include "debug.h"
 using namespace std;
 
 #define int long long
@@ -25,19 +24,15 @@ map<int, int> visited, parent;
 bool f = false;
 int suru = -1;
 
-void dfs(int start)
-{
+void dfs(int start) {
     visited[start] = 1;
     cout << start << " ";
-    for (auto child : adj[start])
-    {
-        if (!visited[child])
-        {
+    for (auto child : adj[start]) {
+        if (!visited[child]) {
             dfs(child);
             parent[child] = start;
         }
-        else if (child != parent[start])
-        {
+        else if (child != parent[start]) {
             f = true;
             suru = child;
             return;
@@ -45,19 +40,16 @@ void dfs(int start)
     }
 }
 
-void solve()
-{
+void solve() {
     int n, m;
     cin >> n >> m;
-    for (int i = 0; i < m; i++)
-    {
+    for (int i = 0; i < m; i++) {
         int x, y;
         cin >> x >> y;
         adj[x].pb(y), adj[y].pb(x);
     }
     dfs(1);
-    if (!f)
-    {
+    if (!f) {
         cout << "IMPOSSIBLE\n";
         return;
     }
@@ -65,8 +57,7 @@ void solve()
     debug(parent);
 }
 
-int32_t main()
-{
+int32_t main() {
     YUSUF REZA HASNAT;
     int t = 1;
     // cin >> t;

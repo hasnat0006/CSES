@@ -24,25 +24,21 @@ int inf = 1e18;
 
 using namespace std;
 
-
 int maxValue = 1e6 + 1;
 vector<int> countDivisor(maxValue, 0);
-void countingDivisor()
-{
+void countingDivisor() {
     for (int i = 1; i < maxValue; i++)
         for (int j = i; j < maxValue; j += i)
             countDivisor[j]++;
 }
 
-void solve()
-{
+void solve() {
     int n;
     cin >> n;
     cout << countDivisor[n] << endl;
 }
 
-int32_t main()
-{
+int32_t main() {
     YUSUF REZA HASNAT;
     int t = 1;
     cin >> t;

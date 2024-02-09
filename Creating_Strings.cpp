@@ -20,8 +20,7 @@ int mod = 1000000007;
 float pi = 3.141592653589793238462643383279502884197;
 int inf = 1e18;
 
-void solve()
-{
+void solve() {
     int n;
     string v;
     cin >> v;
@@ -32,8 +31,7 @@ void solve()
     while (next_permutation(v.begin(), v.end()))
         ans.pb(v), c++;
     cout << ++c << endl;
-    for (auto it : ans)
-    {
+    for (auto it : ans) {
         for (auto pre : it)
             cout << pre;
         cout << endl;
@@ -41,8 +39,7 @@ void solve()
     cout << endl;
 }
 
-int32_t main()
-{
+int32_t main() {
     YUSUF REZA HASNAT;
     int t = 1;
     // cin >> t;

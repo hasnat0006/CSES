@@ -20,8 +20,7 @@ int mod = 1000000007;
 float pi = 3.141592653589793238462643383279502884197;
 int inf = 1e18;
 
-void solve()
-{
+void solve() {
     int n, m, k;
     cin >> n >> m >> k;
     vector<int> person(n), app(m), mark(m);
@@ -32,8 +31,7 @@ void solve()
     sort(vf(person));
     sort(vf(app));
     int ans = 0, x = 0;
-    for (int i = 0; i < n; i++)
-    {
+    for (int i = 0; i < n; i++) {
         auto it = lower_bound(app.begin() + x, app.end(), (person[i] - k));
         int val = it - app.begin();
         // debug(val);
@@ -44,8 +42,7 @@ void solve()
     cout << ans << endl;
 }
 
-int32_t main()
-{
+int32_t main() {
     YUSUF REZA HASNAT;
     int t = 1;
     // cin >> t;

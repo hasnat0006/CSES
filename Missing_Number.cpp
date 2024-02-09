@@ -20,13 +20,11 @@ int mod = 1000000007;
 float pi = 3.141592653589793238462643383279502884197;
 int inf = 1e18;
 
-void solve()
-{
+void solve() {
     int n, x;
     cin >> n;
     vector<int> freq(n + 1, 0);
-    for (int i = 0; i < n - 1; i++)
-    {
+    for (int i = 0; i < n - 1; i++) {
         cin >> x;
         freq[x]++;
     }
@@ -35,8 +33,7 @@ void solve()
             cout << i << endl;
 }
 
-int32_t main()
-{
+int32_t main() {
     YUSUF REZA HASNAT;
     int t = 1;
     // cin >> t;

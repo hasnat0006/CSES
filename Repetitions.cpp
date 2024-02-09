@@ -20,17 +20,14 @@ int mod = 1000000007;
 float pi = 3.141592653589793238462643383279502884197;
 int inf = 1e18;
 
-void solve()
-{
+void solve() {
     string s;
     cin >> s;
     int c = 1, ans = -1;
-    for (int i = 1; s[i]; i++)
-    {
+    for (int i = 1; s[i]; i++) {
         if (s[i] == s[i - 1])
             c++;
-        else
-        {
+        else {
             ans = max(ans, c);
             c = 1;
         }
@@ -40,8 +37,7 @@ void solve()
     cout << ans << endl;
 }
 
-int32_t main()
-{
+int32_t main() {
     YUSUF REZA HASNAT;
     int t = 1;
     // cin >> t;
